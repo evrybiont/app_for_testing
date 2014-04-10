@@ -19,27 +19,24 @@ $(document).ready(function() {
   };
 
   function parseResponse(data){
-    var html = "";
-    var attrValue = null;
-    var text = null;
+    var attrValue, text, db, html = "";
+
+    if (data[0]["_id"]){db = 1;}  // ~ for mongoid
 
     $.each(data, function(){
-      /*alert(JSON.stringify(this));*/
-      /*alert(this._id["$oid"]);*/
       $.each(this, function(key, value){
-        if (value){
-          if (attrValue == null) {
-            attrValue = value["$oid"];
-            /*alert("attr - "+attrValue);*/
-          }else{
-            if (typeof(value)=="string"){
-              text = value;
-              /*alert("text - "+text);*/
-            }
-          }
+        switch(db){
+          case 1:
+            if (value){
+              if (!attrValue){attrValue = value["$oid"];}
+                else {if (typeof(value) == "string"){text = value;}}}
+            break;
+          default:
+            if (!attrValue){attrValue = value}
+              else {text = value;}
         }
       });
-      /*alert(attrValue+ "  -  " + text);*/
+
       html += "<li value="+ attrValue +">"+ text +"</li>"
       attrValue = text = null;
     });
@@ -55,9 +52,7 @@ $(document).ready(function() {
                               async: false,
                               success: function(data){
                                 return data;    
-                              }
-                            }).responseText);
-  };
+                              }}).responseText);};
 
   function wrap(html){
     return "<ul class='items'>"+ html +"</ul>"
