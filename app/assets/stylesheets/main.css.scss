@@ -1,0 +1,26 @@
+body { margin: 0px 400px 0px 400px; }
+.form-horizontal .control-label { text-align: left; }
+.star-rating { width: 155px; }
+.star-rating span {
+  background-image: url('/assets/stars.png');
+  background-position: -24px 0;
+  cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  width: 25px;
+}
+.star-rating span.chosen-star  { background-position: 0px 0; }
+.star-rating:hover span { background-position: -24px 0; }
+.star-rating:hover span.hover-star { background-position: 0px 0; }
+
+.show-rating span {
+  background-image: url('/assets/stars.png');
+  background-position: 0px 0;
+  display: inline-block;
+  height: 24px;
+  width: 25px;
+}
+
+.word-break { word-break: break-all; }
+.hotels-table { border-bottom: 1px solid #DDDDDD; margin-top: 20px; }
+.none-left-padding { padding-left: 0; }

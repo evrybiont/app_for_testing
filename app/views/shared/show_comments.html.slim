@@ -1,0 +1,8 @@
+.row
+  .col-sm-2: strong= t('hotels.comments')
+- @hotel.comments.each do |c|
+  br
+  .row
+    .col-sm-2= c.user.full_name
+    .col-sm-10.word-break= c.text
+br

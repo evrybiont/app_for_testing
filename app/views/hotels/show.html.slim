@@ -1,0 +1,54 @@
+.row
+  .col-sm-2= t('hotels.image')
+  .col-sm-3= image_tag @hotel.photo.thumb.url
+br
+.row
+  .col-sm-2= t('hotels.title')
+  .col-sm-5= @hotel.title
+br
+.row
+  .col-sm-2= t('hotels.star')
+  .col-sm-2 data-bind="showStarRating: #{ @hotel.star_rating }"
+br
+.row
+  .col-sm-2= t('hotels.breakfast')
+  .col-sm-5= @hotel.breakfast_included.to_b
+br
+.row
+  .col-sm-2= t('hotels.room')
+  .col-sm-5.word-break= @hotel.room_description
+br
+.row
+  .col-sm-2= t('hotels.price')
+  .col-sm-5= @hotel.price_for_room
+br
+.row
+  .col-sm-2= t('hotels.country')
+  .col-sm-5= @hotel.country
+br
+.row
+  .col-sm-2= t('hotels.state')
+  .col-sm-5= @hotel.state
+br
+.row
+  .col-sm-2= t('hotels.sity')
+  .col-sm-5= @hotel.sity
+br
+.row
+  .col-sm-2= t('hotels.street')
+  .col-sm-5= @hotel.street
+br
+.row
+  .col-sm-2= t('hotels.publisher')
+  .col-sm-5= @hotel.user.full_name
+br
+.row
+  .col-sm-2= link_to t('hotels.add_hotel'), new_hotel_path, class: 'btn btn-primary'
+  - if @hotel.user == current_user
+    .col-sm-2= link_to t('hotels.edit_hotel'), edit_hotel_path(@hotel), class: 'btn btn-primary'
+    .col-sm-2= link_to t('hotels.destroy_hotel'), hotel_path(@hotel), method: 'delete', class: 'btn btn-primary'
+br
+= render file: 'shared/show_comments' if @hotel.comments.present?
+= render file: 'shared/comment'
+
+| <script type="text/javascript" src="/assets/star_rating.js"></script>

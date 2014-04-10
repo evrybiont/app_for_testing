@@ -1,0 +1,5 @@
+en:
+  hotels:
+    create: Hotel has been successfully added
+    update: Hotel has been successfully updated
+    destroy: Hotel has been successfully destroy

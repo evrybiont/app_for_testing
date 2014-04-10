@@ -1,0 +1,23 @@
+.row
+  .col-sm-2= t('hotels.empty_list') if @hotels.blank?
+  .col-sm-10= link_to t('hotels.add_hotel'), new_hotel_path, class: 'pull-right'
+table class='table hotels-table'
+  tbody
+    - @hotels.each do |h|
+      tr: td: .row
+        .col-sm-3= image_tag h.photo.thumb.url
+        .col-sm-8.col-sm-offset-1
+          .col-sm-12= link_to h.title, hotel_path(h)
+          .col-sm-12 data-bind="showStarRating: #{ h.star_rating }"
+          .col-sm-3= t('hotels.price')
+          .col-sm-9= h.price_for_room
+          .col-sm-3= t('hotels.country')
+          .col-sm-9= h.country
+          .col-sm-3= t('hotels.state')
+          .col-sm-9= h.state
+          .col-sm-3= t('hotels.sity')
+          .col-sm-9= h.sity
+          .col-sm-3= t('hotels.street')
+          .col-sm-9= h.street
+
+| <script type="text/javascript" src="/assets/star_rating.js"></script>

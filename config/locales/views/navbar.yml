@@ -1,0 +1,9 @@
+en:
+  navbar:
+    hotels: Hotels
+    top: Top 5
+    all: All
+    login: Log in
+    signup: Sign up
+    action: Action
+    log_out: Log out

@@ -1,0 +1,4 @@
+= simple_form_for :user, url: logins_path do |f|
+  = f.input :email, required: false
+  = f.input :password, required: false
+  = f.button :submit, t('logins.log_in')

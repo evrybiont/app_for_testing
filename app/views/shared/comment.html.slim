@@ -1,0 +1,4 @@
+= simple_form_for :comment, url: comments_path, method: 'post' do |f|
+  = f.hidden_field :id, value: @hotel.id, name: 'id'
+  .col-sm-2.none-left-padding= f.button :submit, t('shared.add_comment')
+  = f.input :text, as: :text, input_wrapper_html: { class: 'none-left-padding col-sm-7' }, label: false

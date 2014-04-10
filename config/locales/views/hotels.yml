@@ -1,0 +1,20 @@
+en:
+  hotels:
+    empty_list: List is empty!
+    add_hotel: Add hotel
+    edit_hotel: Edit hotel
+    destroy_hotel: Destroy hotel
+    title: Title
+    star: Star rating
+    breakfast: Breakfast included?
+    room: Room Description
+    price: Price for room
+    image: Image
+    country: Country
+    state: State
+    sity: Sity
+    street: Street
+    address: Address
+    comments: Comments
+    create_hotel: Create Hotel
+    update_hotel: Update Hotel

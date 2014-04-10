@@ -1,0 +1,19 @@
+= simple_form_for @hotel, url: url, html: { role: 'form' }, method: method do |f|
+  = f.input :title, required: false, input_html: { autocomplete: 'off' }
+  = f.input :star_rating, collection: 1..5, input_html: { data: { bind: "value: points" } }, required: false, wrapper: :star_rating, star_wrapper_html: { data: { bind: 'starRating: points' } }
+  = f.input :breakfast_included, as: :boolean
+  = f.input :room_description, as: :text
+  = f.input :price_for_room, required: false, input_html: { autocomplete: 'off' }
+  .form-group
+    = f.label :photo
+    .col-sm-5
+      = f.file_field :photo
+      span.help-inline= @hotel.errors[:photo].to_sentence
+  = f.simple_fields_for :address do |address|
+    = address.input :country, required: false, input_html: { autocomplete: 'off' }
+    = address.input :state, required: false, input_html: { autocomplete: 'off' }
+    = address.input :sity, required: false, input_html: { autocomplete: 'off' }
+    = address.input :street, required: false, input_html: { autocomplete: 'off' }
+  = f.button :submit
+
+| <script type="text/javascript" src="/assets/star_rating.js"></script>

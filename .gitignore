@@ -1,0 +1,40 @@
+# project files or operating sytem filesfor specific editors
+.swp
+.eprj
+.project
+.idea
+.DS_Store
+.dotest
+.orig
+nbproject/*
+Thumbs.db
+tags
+bundler_stubs/**
+bundler_stubs
+vendor/ruby
+
+# generated files from application
+.bundle
+coverage/*
+log/*
+tmp/**
+.sass-cache/*
+public/uploads
+solr/pids
+solr/data
+# database files
+db/backups
+db/schema.rb
+
+# configuration files
+!config/locales/**/en.yml
+config/database.yml
+config/database.yml.example
+db/dumps/*.sql
+
+config/cucumber.yml
+config/config.yml
+config/s3.yml
+.ruby-version
+.ruby-gemset
+.rvmrc
