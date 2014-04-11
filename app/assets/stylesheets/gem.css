@@ -1,29 +1,28 @@
-.auto-content {
+#auto_box {
   background-color: white;
   margin-top: 2px;
   position: absolute;
   z-index: 1;
 }
 
-.items {
+#auto_box .items {
   color: #636363;
   list-style-type: none;
   margin-bottom: 0px;
-  padding-left: 0px;
   max-height: 125px;
   overflow: auto;
+  padding-left: 0px;
 }
 
-li {
+#auto_box .items li {
   border-radius: 4px 20px 4px 20px;
   height: 23px;
-  /*line-height: 23px;*/
+  margin: 2px;
   padding-left: 10px;
   padding-right: 10px;
-  margin: 2px;
 }
 
-li:hover {
+#auto_box .items li:hover {
   background-color: #328FD1;
   color: white;
 }

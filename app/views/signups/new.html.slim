@@ -1,7 +1,7 @@
 = simple_form_for @user, url: signups_path do |f|
   = f.simple_fields_for :profile do |p|
     = p.input :first_name, required: false, input_html: {data: {auto:{href: find_hotels_path}} }
-    = p.input :last_name, required: false
+    = p.input :last_name, required: false, input_html: {data: {auto:{href: find_hotels_path}} }
   = f.input :email, required: false
   = f.input :password, required: false
   = f.input :password_confirmation, required: false

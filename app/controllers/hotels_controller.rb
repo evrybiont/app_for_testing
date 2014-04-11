@@ -8,6 +8,7 @@ class HotelsController < ApplicationController
 
   def find
     render json: Hotel.only(:title).all
+    #render json: []
   end
 
   def index
