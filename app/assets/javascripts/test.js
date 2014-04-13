@@ -47,7 +47,6 @@ function parseResponse(data){
   return html;
 };
 
-
 function getData(url){
   return JSON.parse($.ajax({type: 'GET',
                             url: url,
@@ -63,20 +62,18 @@ function result(href) {
   return wrap(html);
 };
 
-$(document).ready(function(){
+function makeResponse($element, color){
+  $($element).attr("autocomplete", "off");
+  $($element).parent().append("<div id='auto_box'></div>");
+  $("#auto_box").css("border", "solid 1px " + color);
+  $("#auto_box").roundThis(getRadius($element));
+  $("#auto_box").width($($element).outerWidth());
+  $("#auto_box").append(result($($element).data("auto").href));
+}
+
+function initAutocomplete(){
   var color = $("input[data-auto]").css("border-right-color");
 
-  $("input[data-auto]").click(function(){
-    $(this).attr("autocomplete", "off");
-    $(this).parent().append("<div id='auto_box'></div>");
-    $("#auto_box").css("border", "solid 1px " + color);
-    $("#auto_box").roundThis(getRadius(this));
-    $("#auto_box").width($(this).outerWidth());
-
-    $("#auto_box").append(result($(this).data("auto").href));
-  });
-
-  $("input[data-auto]").focusout(function(){
-    $("#auto_box").remove();
-  });
-});
+  $("input[data-auto]").click(function(){makeResponse(this, color);});
+  $("input[data-auto]").focusout(function(){$("#auto_box").remove();});
+}
