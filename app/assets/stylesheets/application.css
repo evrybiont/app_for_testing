@@ -11,5 +11,6 @@
  *= require_self
  *= require bootstrap/bootstrap.min
  *= require bootstrap/bootstrap-theme.min
- *= require_tree .
+ *= require gem
+ *= require main
  */

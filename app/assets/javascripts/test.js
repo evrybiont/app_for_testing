@@ -62,18 +62,34 @@ function result(href) {
   return wrap(html);
 };
 
-function makeResponse($element, color){
-  $($element).attr("autocomplete", "off");
+function makeResponse($element){
+  var html = result($($element).data("auto").href);
+  $("#auto_box").empty();
+  $("#auto_box").append(html);
+  $("#auto_box").show();
+}
+
+function generateAutoBox($element, color){
   $($element).parent().append("<div id='auto_box'></div>");
   $("#auto_box").css("border", "solid 1px " + color);
   $("#auto_box").roundThis(getRadius($element));
   $("#auto_box").width($($element).outerWidth());
-  $("#auto_box").append(result($($element).data("auto").href));
 }
 
-function initAutocomplete(){
-  var color = $("input[data-auto]").css("border-right-color");
+function removeAutoBox($element){
+  $("#auto_box").remove();
+  $($element).val('');
+}
 
-  $("input[data-auto]").click(function(){makeResponse(this, color);});
-  $("input[data-auto]").focusout(function(){$("#auto_box").remove();});
+function initAutocomplete(input_length = 2){
+  var color = $("input[data-auto]").css("border-right-color");
+  $("input[data-auto]").attr("autocomplete", "off");
+
+  $("input[data-auto]").keyup(function(){
+    if ($(this).val().length >= input_length){
+      if ($("#auto_box").length == 0){generateAutoBox(this, color)}
+      makeResponse(this);
+    }else{removeAutoBox();}
+  });
+  $("input[data-auto]").focusout(function(){removeAutoBox(this);});
 }

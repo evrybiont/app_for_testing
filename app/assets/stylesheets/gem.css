@@ -1,5 +1,6 @@
 #auto_box {
   background-color: white;
+  display: none;
   margin-top: 2px;
   position: absolute;
   z-index: 1;
