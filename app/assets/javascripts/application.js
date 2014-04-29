@@ -17,3 +17,4 @@
 //= require knockout
 //= require knockout.mapping
 //= require test
+//= require auto
