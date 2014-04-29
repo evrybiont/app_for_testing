@@ -94,7 +94,7 @@ Autocomplete.Manage = function(){
 
   this.out = function(){
     $("#auto_box").remove();
-    $($element).val('');
+    $(this).val('');
   }
 
   function sizeIsUntrue($el){
@@ -103,13 +103,17 @@ Autocomplete.Manage = function(){
     try {size = $($el).data("ajax").opt["size"]}
       catch(e) {}
 
+    if (!(autoBoxIsMissing()) && ($($el).val().length <= size-1) ){
+      $('#auto_box').remove();
+    }
+
     return ($($el).val().length <= size-1);
   };
 
   function autoBoxIsMissing(){return ($("#auto_box").length == 0)}
 };
 
-function initAutocompleteq(){
+function initAutocomplete(){
   manage = new Autocomplete.Manage;
 
   $("input[data-ajax]").keyup(manage.on);
