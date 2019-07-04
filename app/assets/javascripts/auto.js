@@ -1,6 +1,8 @@
-/*===========MAKE FOCUSOUT*/
-
 Autocomplete = {};
+
+Autocomplete.CurrentData = function(){
+  this.is = false;
+};
 
 Autocomplete.Model = function(){
   var color = $("input[data-ajax]").css("border-right-color");
@@ -12,7 +14,8 @@ Autocomplete.Model = function(){
     $("#auto_box").width($($el).outerWidth());
   }
 
-  this.makeResponse = function($el){
+  this.makeResponse = function($el, data){
+    console.log(data.is);
     var html = result($($el).data("ajax").href);
     $("#auto_box").empty();
     $("#auto_box").append(html);
@@ -85,11 +88,12 @@ Autocomplete.Model = function(){
 
 Autocomplete.Manage = function(){
   model = new Autocomplete.Model
+  currentData = new Autocomplete.CurrentData;
 
   this.on = function(){
     if (sizeIsUntrue(this)) { return false }
     if (autoBoxIsMissing()) {model.generateAutoBox(this)}
-    model.makeResponse(this);
+    model.makeResponse(this, currentData);
   };
 
   this.out = function(){
